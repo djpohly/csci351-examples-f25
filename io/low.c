@@ -21,6 +21,13 @@ int main(int argc, char **argv) {
 	int bytes = write(fd, &f, sizeof(f));
 	printf("%d bytes written\n", bytes);
 
+	char buf[200];
+	int printed = sprintf(buf, "%s %d\n", "word", 3030);
+	write(fd, buf, printed);
+
+	lseek(fd, 5, SEEK_SET);
+	write(fd, "hello", 5);
+
 	close(fd);
 	return 0;
 }
